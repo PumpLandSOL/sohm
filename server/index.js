@@ -11,7 +11,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 // ---------- PLACEHOLDERS: the only place the domain and the X handle are set (or use the env vars) ----------
-const SITE_URL = (process.env.SITE_URL || 'https://YOUR-DOMAIN.example').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://solanaohm.xyz').replace(/\/$/, '');
 const X_URL = process.env.X_URL || 'https://x.com/SolanaOHM';
 
 // private settings (TREASURY_WALLET, ADMIN_KEY…) can live in a git-ignored .env next to package.json; real env vars win
