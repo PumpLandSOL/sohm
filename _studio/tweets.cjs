@@ -92,6 +92,13 @@ $sOHM`],
 The dashboard reads its SOL, USDC and USDT balances from the chain every 20 seconds, so the figure you see is a live reading and never a typed-in number.
 
 $sOHM`],
+['Comparison', 'sohm-g11-compare.png', `Olympus on Ethereum rebased three times a day. So did Wonderland on Avalanche.
+
+sOHM rebases 288 times a day, and the transfer that bonds you in costs less than a cent.
+
+Same game, dealt on a faster table.
+
+$sOHM`],
 ['Launch (fill CA)', 'sohm-g10-live.png', `$sOHM is live on Solana, and staking just opened.
 
 Stake to join the five-minute rebase. Bond SOL, USDT or USDC to buy under market.

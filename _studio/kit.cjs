@@ -51,6 +51,11 @@ const G = {
     <div style="position:absolute;left:1020px;top:352px;width:400px;text-align:center"><div class="cap d" style="font-size:14px">Read from Solana</div><div class="ser it" style="font-size:74px;line-height:1.1;margin-top:8px">every 20s</div></div>` + FOOT() + ros({ cx: 1220, cy: 420, S: 300, well: 1, progress: 0.33 })],
 
   'sohm-g10-live': [W, H, () => HEAD(W, H) + `<div style="position:absolute;left:0;right:0;top:250px;text-align:center"><div class="cap">$sOHM · live on Solana</div><div class="h" style="font-size:190px;margin-top:20px">Staking is <em>open.</em></div><div class="ser it" style="font-size:40px;color:#ab9fc6;margin-top:18px">Stake sOHM. Receive stOHM. Compound every five minutes.</div></div>` + FOOT() + ros({ cx: 800, cy: 430, S: 400, well: 1, progress: 1 })],
+
+  'sohm-g11-compare': [W, H, () => { const R = [['Chain', 'Solana', 'Ethereum', 'Avalanche'], ['Rebases a day', '288', '3', '3'], ['Epoch', '5 minutes', '8 hours', '8 hours'], ['Network fee', 'under a cent', 'dollars', 'cents'], ['Bond assets', 'SOL · USDT · USDC', 'DAI · FRAX · LP', 'MIM · AVAX · LP']];
+    return HEAD(W, H) + title('Compare', 'Same game.<br><em>Faster table.</em>', 64, 84, 900) + `<div style="position:absolute;left:70px;right:70px;top:296px;display:grid;grid-template-columns:330px 1.25fr 1fr 1fr">
+      <div></div><div class="ser it" style="font-size:50px;color:#fff;padding:0 0 12px 28px;border-left:1px solid #9b6dff;background:linear-gradient(180deg,rgba(155,109,255,.22),rgba(155,109,255,.10))">sOHM</div><div class="ser it dim" style="font-size:42px;padding:6px 0 12px 28px">OHM</div><div class="ser it dim" style="font-size:42px;padding:6px 0 12px 28px">TIME</div>
+      ${R.map(([a, b, c, d]) => `<div class="cap d" style="font-size:15px;padding:20px 0 0;border-top:1px solid #2c1d4d">${a}</div><div class="mono" style="font-size:30px;color:#fff;padding:13px 0 13px 28px;border-top:1px solid #2c1d4d;border-left:1px solid #9b6dff;background:rgba(155,109,255,.10)">${b}</div><div class="mono dim" style="font-size:26px;padding:15px 0 13px 28px;border-top:1px solid #2c1d4d">${c}</div><div class="mono dim" style="font-size:26px;padding:15px 0 13px 28px;border-top:1px solid #2c1d4d">${d}</div>`).join('')}</div>` + FOOT() + ros({ cx: 1420, cy: 150, S: 210, a: 0.7, text: '' }); }],
 };
 
 (async () => {
