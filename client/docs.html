@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sOHM Docs · staking, bonds, treasury on Solana</title>
+<meta name="description" content="How sOHM works: staking and the rebase index, bond pricing and on-chain verification, the treasury, payouts, network details and API.">
+<link rel="canonical" href="{{SITE_URL}}/docs"><meta property="og:url" content="{{SITE_URL}}/docs">
+<link rel="icon" href="/client/mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/client/sohm.css">
+<style>
+.lay{display:grid;grid-template-columns:210px 1fr;gap:60px;padding:48px 0 70px}
+.toc{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column;gap:9px;font-size:14px}.toc .t{font:400 10.5px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}.toc a{color:var(--dim)}.toc a:hover{color:var(--ink)}
+.doc{max-width:800px;min-width:0}.kick{font:400 11.5px var(--mono);letter-spacing:.3em;color:var(--acc)}
+.doc h1{font:400 clamp(40px,6vw,68px)/1 var(--serif);letter-spacing:-.035em;margin-top:14px}.doc h1 em{font-style:italic;color:var(--acc2)}
+.doc .lead{color:var(--dim);font:italic 300 20px/1.5 var(--serif);margin:16px 0 10px}
+.doc h2{font:italic 500 28px/1.15 var(--serif);letter-spacing:-.01em;margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--ln);scroll-margin-top:84px}
+.doc p,.doc li{color:var(--dim);line-height:1.78;margin-bottom:12px}.doc b{color:var(--ink);font-weight:600}.doc ul,.doc ol{padding-left:22px}
+.doc code{font:400 .86em var(--mono);background:var(--p2);border:1px solid var(--ln);padding:1px 6px;color:var(--acc2);word-break:break-all}
+.doc pre{font:400 13px/1.75 var(--mono);background:var(--p1);border:1px solid var(--ln2);border-left:2px solid var(--acc);padding:16px 18px;overflow-x:auto;color:var(--acc2);margin:10px 0 18px}
+.doc table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:14px}.doc td,.doc th{padding:12px 12px 12px 0;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top;color:var(--dim)}.doc th{font:400 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}.doc td:first-child{color:var(--ink);white-space:nowrap}
+@media(max-width:900px){.lay{grid-template-columns:1fr;gap:22px;padding-top:28px}.toc{position:static;flex-direction:row;flex-wrap:wrap;gap:6px 16px}.toc .t{width:100%}.doc td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap hrow">
+  <a class="logo" href="/"><img src="/client/mark.svg" alt="" width="28" height="28">sOHM</a>
+  <nav class="tabs"><a class="tab" href="/">Home</a><a class="tab" href="/app">App</a><a class="tab on" href="/docs">Docs</a></nav>
+  <div class="wbox"><span class="net"><i></i>Solana</span><a class="btn primary" href="/app">Launch app</a></div>
+</div></header>
+<div class="wrap lay">
+<aside class="toc"><div class="t">On this page</div><a href="#overview">Overview</a><a href="#network">Network</a><a href="#wallet">Wallet &amp; sessions</a><a href="#stake">Staking</a><a href="#rebase">Rebase &amp; index</a><a href="#bonds">Bonds</a><a href="#verify">Payment verification</a><a href="#treasury">Treasury</a><a href="#payouts">Payouts</a><a href="#params">Parameters</a><a href="#api">API</a><a href="#custody">Custody model</a></aside>
+<main class="doc">
+<div class="kick">DOCUMENTATION</div>
+<h1>How <em>sOHM</em> works</h1>
+<p class="lead">Everything that happens when you stake, bond, claim and unstake, and exactly what is read from Solana along the way.</p>
+
+<h2 id="overview">Overview</h2>
+<p>sOHM is an OHM-style (3,3) reserve protocol on <b>Solana</b>. It has three parts: <b>staking</b> (sOHM → stOHM, compounding every epoch), <b>bonds</b> (SOL, USDC or USDT → discounted sOHM, vested), and a <b>treasury</b> (one Solana wallet holding every bond payment and every staked sOHM).</p>
+
+<h2 id="network">Network</h2>
+<table><tr><td>Chain</td><td>Solana mainnet-beta</td></tr><tr><td>Fees</td><td>SOL, typically under $0.001 per transfer</td></tr><tr><td>Explorer</td><td><code>https://solscan.io</code></td></tr><tr><td>USDC</td><td><code>EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v</code> (6 decimals)</td></tr><tr><td>USDT</td><td><code>Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB</code> (6 decimals)</td></tr><tr><td>$sOHM</td><td>launches on pump.fun; the mint address appears at the top of the app the moment it is live</td></tr></table>
+<p>Only the two mint addresses above are accepted for stablecoin bonds. A token that merely calls itself USDC or USDT is ignored, because payments are matched by mint address, never by name.</p>
+
+<h2 id="wallet">Wallet &amp; sessions</h2>
+<p>The app uses <b>Phantom</b>. Connecting asks for one message signature (ed25519), which costs nothing and moves no funds. The server verifies that signature against your public key and treats it as a session for 7 days. Unstaking and claiming require a valid session, so only the wallet that owns a position can move it. Stakes and bonds need no session, since each one is its own signed Solana transaction.</p>
+
+<h2 id="stake">Staking</h2>
+<p>Staking is a real transfer of sOHM from your wallet to the treasury. The server reads the confirmed transaction from Solana and credits stOHM only if it succeeded, was signed by your wallet and moved sOHM into the treasury. The amount credited is the amount that arrived on-chain. A fresh stake locks the position for one hour before it can be unstaked, and the minimum deposit is 300,000 sOHM.</p>
+
+<h2 id="rebase">Rebase &amp; index</h2>
+<p>Your stOHM is stored as a share of the pool. Every epoch the global <b>index</b> is multiplied by <code>1 + rate</code>, so every stOHM balance grows by the same percentage at the same moment. Between epochs the app interpolates the index so your balance ticks smoothly.</p>
+<pre>rate per epoch = (1 + APY)^(1 / epochs per year) − 1
+stOHM balance  = shares × index</pre>
+<p>For the first 24 hours after the token goes live, a launch boost lifts the APY. The dashboard shows the boosted rate and a countdown while it is active.</p>
+
+<h2 id="bonds">Bonds</h2>
+<p>Each market sells sOHM at a discount to the market price, vesting linearly over 5 days.</p>
+<pre>bond price  = sOHM price × (1 − discount)
+USD value   = amount × SOL price   (SOL)   ·   amount × 1   (USDC, USDT)
+sOHM owed   = USD value ÷ bond price</pre>
+<table><tr><th>Market</th><th>Discount</th><th>Paid as</th><th>Minimum</th></tr><tr><td>SOL</td><td>7%</td><td>native SOL transfer to the treasury</td><td>0.05 SOL</td></tr><tr><td>USDT</td><td>6%</td><td>USDT SPL transfer</td><td>5 USDT</td></tr><tr><td>USDC</td><td>5%</td><td>USDC SPL transfer</td><td>5 USDC</td></tr></table>
+<p>The SOL price comes from Coinbase spot, with CoinGecko as the fallback, refreshed every 30 seconds. The sOHM price is read from the deepest Solana pool once the token trades; before that it is the opening price of the pump.fun bonding curve. Vested sOHM can be claimed at any time: <b>Claim &amp; stake</b> moves it straight into stOHM, <b>Claim to wallet</b> queues it for payout.</p>
+
+<h2 id="verify">Payment verification</h2>
+<p>Phantom signs and sends the payment, then the app posts only the transaction signature. The server fetches the confirmed transaction from a Solana RPC node and checks:</p>
+<ol><li>the transaction succeeded;</li><li>your connected wallet is one of its signers;</li><li>for SOL: the treasury's lamport balance rose and yours fell, using the pre- and post-balances Solana records for every transaction;</li><li>for USDC, USDT and sOHM: the treasury's token balance for that exact mint rose and yours fell, using the recorded token balances;</li><li>the amount is at or above the market minimum;</li><li>the signature has never been credited before.</li></ol>
+<p>The credited amount is the smaller of what left your wallet and what arrived in the treasury. Because it reads balance changes instead of parsing instructions, the check is correct for plain transfers, routed transfers, Token-2022 mints and tokens with transfer fees. If you close the page before it finishes, paste the signature under <b>Credit by signature</b> in the app.</p>
+
+<h2 id="treasury">Treasury</h2>
+<p>The treasury is one Solana wallet. Its key is held offline by the operator and never touches the server. Every 20 seconds the server reads its SOL balance and its USDC, USDT and sOHM token accounts from the chain, and the dashboard shows them with their USD value.</p>
+
+<h2 id="payouts">Payouts</h2>
+<p>Unstakes (after the lock) and "claim to wallet" both join the payout queue, and each payout is sent from the treasury on Solana. Claim &amp; stake never leaves the protocol and takes effect immediately.</p>
+
+<h2 id="params">Parameters</h2>
+<table><tr><td>Epoch</td><td>5 minutes</td></tr><tr><td>Vesting</td><td>5 days, linear</td></tr><tr><td>Stake lock</td><td>1 hour from the latest deposit</td></tr><tr><td>Minimum stake</td><td>300,000 sOHM</td></tr><tr><td>Supply</td><td>1,000,000,000 sOHM, fixed</td></tr><tr><td>Session</td><td>7 days per signature</td></tr></table>
+
+<h2 id="api">API</h2>
+<pre>GET  /api/config     network, mint, token mints, limits
+GET  /api/metrics    APY, index, epoch, treasury (on-chain), bonds, tape
+GET  /api/session    ?wallet=…                    message to sign
+POST /api/account    { wallet }                   staked, bonds, pending payouts
+POST /api/intent     { wallet, kind, market }     accounts + blockhash for the transfer
+POST /api/bond       { wallet, market, tx }       verify payment, record bond
+POST /api/stake      { wallet, tx }               verify deposit, credit stOHM
+POST /api/claim      { wallet, autostake, auth }
+POST /api/unstake    { wallet, amount, auth }</pre>
+
+<h2 id="custody">Custody model</h2>
+<p>The sOHM token has a fixed supply, so rebases do not mint new tokens on-chain. The index, stOHM balances, bond vesting and the payout queue are kept in the sOHM ledger. Every deposit, every bond payment and the treasury itself are real Solana transactions and balances, and payouts are sent from the treasury wallet by the operator. The APY is an emission rate paid in sOHM, so its dollar value moves with the sOHM price.</p>
+</main></div>
+<div class="lace"></div>
+<footer class="foot"><div class="wrap"><div class="logo"><img src="/client/mark.svg" alt="" width="24" height="24">sOHM</div><p>The (3,3) reserve of Solana. <a href="/">Home</a> · <a href="/app">App</a> · <a href="{{X_URL}}" target="_blank" rel="noopener">X</a></p></div></footer>
+</body>
+</html>

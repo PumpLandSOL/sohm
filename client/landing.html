@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sOHM · the (3,3) reserve of Solana</title>
+<meta name="description" content="sOHM is the OHM-style reserve currency of Solana. Stake to compound every epoch. Bond SOL, USDC or USDT for discounted sOHM. Every payment is verified on Solana before it is credited.">
+<meta property="og:title" content="sOHM · the (3,3) reserve of Solana"><meta property="og:description" content="Stake. Bond. Compound. The OHM reserve, on Solana."><meta name="twitter:card" content="summary">
+<link rel="canonical" href="{{SITE_URL}}/"><meta property="og:url" content="{{SITE_URL}}/">
+<link rel="icon" href="/client/mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/client/sohm.css">
+<style>
+.nav2{display:flex;gap:24px;flex:1}.nav2 a{color:var(--dim);font:500 14px var(--sans)}.nav2 a:hover{color:var(--ink)}
+/* hero: the note */
+.hero{position:relative;height:calc(100svh - 65px);min-height:640px;max-height:980px;overflow:hidden}
+#rosette{position:absolute;inset:0;width:100%;height:100%}
+.mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:min(560px,86vw);z-index:2}
+.mid .cap{font:400 11.5px var(--mono);letter-spacing:.34em;text-transform:uppercase;color:var(--acc2)}
+.mid h1{font:italic 400 clamp(84px,15vw,190px)/.86 var(--serif);letter-spacing:-.045em;margin:14px 0 10px;background:linear-gradient(180deg,#fff 20%,#cdb8ff 60%,#8a5cf5);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .06em .08em}
+.mid p{font:italic 300 clamp(17px,2.1vw,22px)/1.4 var(--serif);color:var(--dim)}
+.cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;justify-content:center}.cta .btn{padding:13px 26px;font-size:15px}
+/* corner denominations */
+.cor{position:absolute;z-index:2;padding:26px 30px;max-width:260px}.cor .l{font:400 10.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+.cor .v{font:italic 400 clamp(26px,3vw,40px)/1.05 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-top:6px}.cor .s{font:400 11.5px var(--mono);color:var(--dim);margin-top:4px}
+.cor.tl{left:0;top:0}.cor.tr{right:0;top:0;text-align:right}.cor.bl{left:0;bottom:0}.cor.br{right:0;bottom:0;text-align:right}
+.cor.tl .v{color:var(--acc2)}
+/* serial strip */
+.strip .wrap{display:grid;grid-template-columns:repeat(5,1fr)}.strip .c{padding:22px 20px;border-left:1px solid var(--ln)}.strip .c:first-child{border-left:0;padding-left:0}
+.strip .l{font:400 10.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}.strip .v{font:400 22px var(--mono);margin-top:8px;color:var(--ink)}
+section.s{padding:104px 0}
+.kicker{font:400 11.5px var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+h2{font:400 clamp(34px,4.8vw,62px)/1.02 var(--serif);letter-spacing:-.03em;margin:14px 0 18px;max-width:860px}h2 em{font-style:italic;color:var(--acc2)}
+.sub{color:var(--dim);font-size:17px;max-width:640px;line-height:1.65}
+/* three plates */
+.plates{display:grid;grid-template-columns:repeat(3,1fr);margin-top:54px;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.plate{padding:34px 30px 38px;border-left:1px solid var(--ln);position:relative}.plate:first-child{border-left:0;padding-left:0}
+.plate .n{font:italic 300 88px/1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--ln2);letter-spacing:-.04em}
+.plate h3{font:italic 500 26px/1.15 var(--serif);margin:18px 0 10px}.plate p{color:var(--dim);font-size:14.5px;line-height:1.7}
+/* loop */
+.loop{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.flow{border-top:1px solid var(--ln)}.fl{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--ln)}
+.fl .a{font:400 11px var(--mono);letter-spacing:.2em;color:var(--acc2)}.fl .b{color:var(--dim);font-size:14.5px}.fl .c{font:400 12.5px var(--mono);color:var(--ink)}
+/* bonds table */
+.btable{width:100%;border-collapse:collapse;min-width:660px}.btable th{font:400 10.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--ln2)}
+.btable td{padding:20px 16px 20px 0;border-bottom:1px solid var(--ln);font:400 14.5px var(--mono);color:var(--ink)}.btable td:first-child{font:italic 500 24px var(--serif)}.btable .d{color:var(--hot)}
+/* compare */
+.cmp{display:grid;grid-template-columns:1.1fr 1.2fr 1fr 1fr;margin-top:46px;border-top:1px solid var(--ln2)}.cmp>div{padding:16px 18px 16px 0;border-bottom:1px solid var(--ln);font-size:14.5px;color:var(--dim)}
+.cmp .h{font:italic 500 21px var(--serif);color:var(--ink)}.cmp .k{font:400 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding-top:19px}.cmp .me{color:var(--ink);background:linear-gradient(90deg,rgba(155,109,255,.10),transparent);padding-left:16px;border-left:1px solid var(--acc)}.cmp .h.me{color:var(--acc2)}
+/* faq */
+.faq{margin-top:40px;border-top:1px solid var(--ln2)}.faq details{border-bottom:1px solid var(--ln)}.faq summary{list-style:none;cursor:pointer;padding:24px 0;font:italic 500 22px/1.25 var(--serif);display:flex;justify-content:space-between;gap:20px}.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:'+';font:300 26px var(--mono);color:var(--acc);line-height:1}.faq details[open] summary:after{content:'−'}.faq p{color:var(--dim);padding:0 0 26px;max-width:860px;line-height:1.75}.faq code{font:400 .88em var(--mono);color:var(--acc2);word-break:break-all}
+.final{text-align:center;padding:120px 0 110px;position:relative}.final h2{margin:14px auto 16px}.final .sub{margin:0 auto}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
+@media(max-width:980px){.nav2{display:none}.loop{grid-template-columns:1fr;gap:34px}.plates{grid-template-columns:1fr}.plate{border-left:0;border-top:1px solid var(--ln);padding-left:0}.plate:first-child{border-top:0}
+  .strip .wrap{grid-template-columns:1fr 1fr}.strip .c{border-left:0;padding-left:0;border-top:1px solid var(--ln)}.strip .c:nth-child(-n+2){border-top:0}.strip .c:last-child{grid-column:span 2}
+  .cmp{grid-template-columns:1fr 1fr 1fr}.cmp .k{grid-column:span 3;padding-bottom:0;border-bottom:0}.cmp .h.k{display:none}.fl{grid-template-columns:80px 1fr}.fl .c{display:none}section.s{padding:72px 0}}
+@media(max-width:700px){.hero{height:auto;min-height:0;max-height:none;padding:0 0 8px}#rosette{height:100vw;max-height:520px;top:16px}.mid{position:relative;left:auto;top:auto;transform:none;margin:0 auto;padding-top:calc(min(100vw,520px)/2 - 78px);width:88vw}
+  .mid h1{font-size:96px}.cors{display:grid;grid-template-columns:1fr 1fr;margin-top:calc(min(100vw,520px)/2 - 150px);border-top:1px solid var(--ln)}.cor{position:static;padding:18px 20px;text-align:left!important;max-width:none;border-bottom:1px solid var(--ln)}.cor:nth-child(odd){border-right:1px solid var(--ln)}.cta{margin-top:20px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap hrow">
+  <a class="logo" href="/"><img src="/client/mark.svg" alt="" width="28" height="28">sOHM</a>
+  <nav class="nav2"><a href="#how">How it works</a><a href="#bonds">Bonds</a><a href="#compare">Compare</a><a href="#faq">FAQ</a><a href="/docs">Docs</a></nav>
+  <div class="wbox"><span class="net"><i></i>Solana mainnet</span><a class="icb" href="{{X_URL}}" target="_blank" rel="noopener" aria-label="sOHM on X">𝕏</a><a class="btn primary" href="/app">Launch app</a></div>
+</div></header>
+
+<section class="hero">
+  <canvas id="rosette"></canvas>
+  <div class="mid">
+    <div class="cap">The (3,3) reserve of Solana</div>
+    <h1>sOHM</h1>
+    <p>Stake to compound every epoch. Bond SOL to buy below market.</p>
+    <div class="cta"><a class="btn primary" href="/app#bond">Bond SOL →</a><a class="btn ghost" href="/app">Open the app</a></div>
+  </div>
+  <div class="cors">
+    <div class="cor tl"><div class="l">Staking APY</div><div class="v" id="tApy">—</div><div class="s">compounds every <span id="tReb">5</span> min</div></div>
+    <div class="cor tr"><div class="l">Next rebase</div><div class="v mono" id="tNext" style="font-style:normal;font-family:var(--mono);font-size:clamp(24px,2.6vw,34px)">—</div><div class="s" id="tEpoch">epoch —</div></div>
+    <div class="cor bl"><div class="l">Treasury</div><div class="v" id="tTre">—</div><div class="s">read live from Solana</div></div>
+    <div class="cor br"><div class="l">Best bond</div><div class="v" id="tBond">—</div><div class="s">index <span id="tIdx">—</span></div></div>
+  </div>
+</section>
+
+<div class="lace"></div>
+<div class="strip"><div class="wrap">
+  <div class="c"><div class="l">sOHM price</div><div class="v" id="sP">—</div></div><div class="c"><div class="l">Total staked</div><div class="v" id="sS">—</div></div><div class="c"><div class="l">Stakers</div><div class="v" id="sN">—</div></div><div class="c"><div class="l">SOL</div><div class="v" id="sSol">—</div></div><div class="c"><div class="l">Solana slot</div><div class="v" id="sB">—</div></div>
+</div></div>
+<div class="lace"></div>
+
+<section class="s" id="how"><div class="wrap">
+  <div class="kicker reveal">How it works</div><h2 class="reveal">Three moves. <em>One flywheel.</em></h2><p class="sub reveal">Olympus proved the model: a treasury that only grows, a token backed by what it holds, and stakers paid in the protocol's own supply. sOHM runs it at Solana speed, with every payment checked against the chain.</p>
+  <div class="plates">
+    <div class="plate reveal"><div class="n">I</div><h3>Stake and compound</h3><p>Stake sOHM, receive stOHM. Every five minutes the index steps up and your stOHM balance grows with it. Unstake any time after the lock; payouts are sent from the treasury.</p></div>
+    <div class="plate reveal"><div class="n">II</div><h3>Bond below market</h3><p>Pay SOL, USDC or USDT to the treasury and receive sOHM at a 5–7% discount, vesting linearly over five days. Claim to your wallet, or claim and stake in one click.</p></div>
+    <div class="plate reveal"><div class="n">III</div><h3>A treasury you can read</h3><p>Every bond lands in one wallet on Solana. Its SOL, USDC and USDT balances are read from the chain every 20 seconds and shown live, so backing is a number anyone can check.</p></div>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:0"><div class="wrap loop">
+  <div><div class="kicker reveal">The (3,3) loop</div><h2 class="reveal">Bonds fill the treasury. <em>Stakers hold.</em></h2><p class="sub reveal">If everyone stakes, everyone compounds. When someone bonds, the treasury grows and backing rises for every holder. Selling is the one move that breaks the loop, and the game is built so it pays least.</p></div>
+  <div class="flow">
+    <div class="fl reveal"><span class="a">BOND</span><span class="b">SOL, USDC or USDT paid to the treasury on Solana</span><span class="c">+ treasury</span></div>
+    <div class="fl reveal"><span class="a">VERIFY</span><span class="b">transaction read on-chain, real amount credited</span><span class="c">once per signature</span></div>
+    <div class="fl reveal"><span class="a">VEST</span><span class="b">discounted sOHM unlocks over 5 days</span><span class="c">−5 to −7%</span></div>
+    <div class="fl reveal"><span class="a">STAKE</span><span class="b">claim and stake straight into stOHM</span><span class="c">+ every epoch</span></div>
+    <div class="fl reveal"><span class="a">REBASE</span><span class="b">index steps up, stOHM grows</span><span class="c" id="lRate">—</span></div>
+  </div>
+</div></section>
+
+<section class="s" id="bonds" style="padding-top:0"><div class="wrap">
+  <div class="kicker reveal">Bonds · live</div><h2 class="reveal">Pay in SOL. <em>Get sOHM cheaper.</em></h2><p class="sub reveal">Prices follow the live SOL price. Each market pays the treasury directly, and nothing moves until your own wallet signs.</p>
+  <div class="reveal" style="overflow-x:auto;margin-top:40px"><table class="btable"><thead><tr><th>Market</th><th>Discount</th><th>Bond price</th><th>Paid as</th><th>Vest</th><th>Minimum</th></tr></thead><tbody id="bt"><tr><td colspan="6" style="font:400 14px var(--mono);color:var(--mut)">loading…</td></tr></tbody></table></div>
+  <div class="cta reveal" style="justify-content:flex-start;margin-top:34px"><a class="btn primary" href="/app#bond">Bond now →</a></div>
+</div></section>
+
+<section class="s" id="compare" style="padding-top:0"><div class="wrap">
+  <div class="kicker reveal">Compare</div><h2 class="reveal">Same game. <em>Faster table.</em></h2><p class="sub reveal">OHM on Ethereum set the template and Wonderland ran it on Avalanche. sOHM runs it on Solana, where a transfer settles in under a second and costs a fraction of a cent.</p>
+  <div class="cmp reveal">
+    <div class="h k"></div><div class="h me">sOHM</div><div class="h">OHM</div><div class="h">TIME</div>
+    <div class="k">Chain</div><div class="me">Solana</div><div>Ethereum</div><div>Avalanche</div>
+    <div class="k">Fees</div><div class="me">SOL, fractions of a cent</div><div>ETH, dollars</div><div>AVAX, cents</div>
+    <div class="k">Bond assets</div><div class="me">SOL · USDC · USDT</div><div>DAI · FRAX · LP</div><div>MIM · AVAX · LP</div>
+    <div class="k">Rebase</div><div class="me">every 5 minutes</div><div>every 8 hours</div><div>every 8 hours</div>
+    <div class="k">Bond check</div><div class="me">transaction read from Solana</div><div>contract</div><div>contract</div>
+    <div class="k">Treasury view</div><div class="me">live wallet balances</div><div>dashboard</div><div>dashboard</div>
+  </div>
+</div></section>
+
+<section class="s" id="faq" style="padding-top:0"><div class="wrap">
+  <div class="kicker reveal">FAQ</div><h2 class="reveal">Questions, <em>answered.</em></h2>
+  <div class="faq reveal">
+    <details open><summary>What is sOHM?</summary><p>sOHM is an OHM-style reserve protocol on Solana. Holders stake sOHM for stOHM, which grows every epoch as the index rebases. Bonds sell sOHM below market for SOL, USDC or USDT, and every payment goes into the protocol treasury, whose balances are read from Solana and shown live.</p></details>
+    <details><summary>What is (3,3)?</summary><p>It is the game-theory shorthand from OlympusDAO. If two players both stake, both earn (+3, +3). If one sells, the seller gains less and the one who stayed is hurt. The protocol pays the most to the people who stay staked, and bonds route new capital into the treasury instead of onto the market.</p></details>
+    <details><summary>How do bonds work?</summary><p>Pick a market (SOL, USDC or USDT), enter an amount and approve the transfer in Phantom. It goes straight to the treasury on Solana. The sOHM server then reads the confirmed transaction from a Solana RPC node, checks that your wallet signed it, that it succeeded and how much actually arrived in the treasury, and credits that amount. Each transaction signature can be credited once. Your sOHM vests linearly over 5 days.</p></details>
+    <details><summary>How is the bond price set?</summary><p>Bond price = sOHM market price × (1 − discount). The dollar value of a SOL bond uses the live SOL price from Coinbase, with CoinGecko as the fallback, refreshed every 30 seconds. USDC and USDT are valued at $1. Before the token is trading, the market price is the opening price of the pump.fun bonding curve.</p></details>
+    <details><summary>When can I stake?</summary><p>Staking accepts sOHM, so it opens the moment the $sOHM token launches on pump.fun. Until then, bond to get sOHM below market. As it vests you can claim and stake in one step, without waiting for a payout.</p></details>
+    <details><summary>Where does the APY come from?</summary><p>From emissions. Each epoch the index increases and every stOHM balance grows by the same rate at the same moment. It is paid in sOHM, so its dollar value moves with the sOHM price and with the treasury that backs it. The app shows the current rate, the countdown to the next rebase and the runway at current emissions.</p></details>
+    <details><summary>Who holds the treasury?</summary><p>The treasury is a single Solana wallet. Its key is held offline by the operator and never touches the server. Bond payments and staked sOHM sit there, and its SOL, USDC and USDT balances are read from the chain every 20 seconds and shown on the dashboard. When you bond or stake, Phantom shows you the exact transfer before you approve it.</p></details>
+    <details><summary>How do unstaking and payouts work?</summary><p>Unstaking (after the one-hour lock) and claiming vested sOHM to your wallet both join the payout queue, and the treasury sends the tokens on Solana. Both actions need your signed session, so only the wallet that owns a position can move it. Claim and stake skips the queue and moves vested sOHM straight into stOHM.</p></details>
+    <details><summary>Which wallet do I need?</summary><p>Phantom, on desktop or in the Phantom app's browser on mobile. Connecting asks for one free message signature that proves the wallet is yours; it moves no funds. You need a little SOL for network fees, usually well under a cent per transfer.</p></details>
+    <details><summary>My payment went through but the page closed. Is it lost?</summary><p>No. The transaction signature is all the server needs. Open the app, connect the same wallet, paste the signature under "Credit by signature" on the Bond tab and it is verified and credited exactly as if the page had stayed open.</p></details>
+    <details><summary>How is this different from a smart-contract OHM?</summary><p>The token has a fixed supply, so rebases do not mint new tokens on-chain. The index, the stOHM balances and bond vesting are kept in the sOHM ledger, while every deposit, every bond payment and the treasury itself are real Solana transactions and balances. Payouts are sent from the treasury wallet by the operator.</p></details>
+  </div>
+</div></section>
+
+<div class="lace"></div>
+<section class="final"><div class="wrap">
+  <div class="kicker">Solana · (3,3)</div><h2>Stake. Bond. <em>Compound.</em></h2><p class="sub">The reserve currency of Solana starts with the first bond.</p>
+  <div class="cta"><a class="btn primary" href="/app#bond">Bond SOL →</a><a class="btn ghost" href="/docs">Read the docs</a></div>
+</div></section>
+<div class="lace"></div>
+
+<footer class="foot"><div class="wrap"><div class="logo"><img src="/client/mark.svg" alt="" width="24" height="24">sOHM</div><p>The (3,3) reserve of Solana. Staked sOHM and bond payments are held in the treasury wallet and visible on-chain; rebases, the index and vesting run in the sOHM ledger and payouts are sent from the treasury. <a href="/app">App</a> · <a href="/docs">Docs</a> · <a href="{{X_URL}}" target="_blank" rel="noopener">X</a></p></div></footer>
+
+<script src="/client/src/rosette.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const money = (n) => '$' + (n >= 1e9 ? (n / 1e9).toFixed(2) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'K' : n.toFixed(2));
+  const tok = (n) => n >= 1e9 ? (n / 1e9).toFixed(2) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? Math.round(n).toLocaleString() : n.toFixed(2);
+  const px = (p) => '$' + (p >= 0.01 ? p.toFixed(4) : p >= 0.0001 ? p.toFixed(6) : p.toFixed(9));
+  const ros = window.sohmRosette($('rosette'));
+  let M = null, t0 = 0;
+  async function load() {
+    try { M = await (await fetch('/api/metrics')).json(); t0 = Date.now(); } catch (e) { return; }
+    const T = M.treasuryOnchain || {};
+    $('tApy').textContent = Math.round(M.apy).toLocaleString() + '%'; $('tEpoch').textContent = 'epoch ' + M.epoch; $('tReb').textContent = Math.round(M.rebaseSec / 60);
+    $('tTre').textContent = money(M.treasury);
+    const best = M.bonds.slice().sort((a, b) => b.discount - a.discount)[0]; $('tBond').textContent = best ? best.name + ' −' + (best.discount * 100).toFixed(0) + '%' : '—';
+    $('sP').textContent = px(M.price); $('sS').textContent = tok(M.totalStaked); $('sN').textContent = M.stakers || 0;
+    $('sSol').textContent = T.solUsd ? '$' + T.solUsd.toFixed(2) : '—'; $('sB').textContent = M.slot ? M.slot.toLocaleString() : '—';
+    $('lRate').textContent = '+' + (M.rate * 100).toFixed(4) + '% / epoch';
+    $('bt').innerHTML = M.bonds.map((b) => `<tr><td>${b.name}</td><td class="d">−${(b.discount * 100).toFixed(1)}%</td><td>${px(b.price)}</td><td>${b.id === 'sol' ? 'native SOL transfer' : b.name + ' SPL transfer'}</td><td>${b.vestDays} days</td><td>${b.min} ${b.name}</td></tr>`).join('');
+    ros.set({ text: 'SOHM · THE (3,3) RESERVE OF SOLANA · EPOCH ' + M.epoch + ' · STAKE · BOND · COMPOUND · ' });
+  }
+  load(); setInterval(load, 8000);
+  setInterval(() => { if (!M) return; let n = M.nextRebaseIn - (Date.now() - t0) / 1000; while (n < 0) n += M.rebaseSec;
+    $('tNext').textContent = Math.floor(n / 60) + ':' + String(Math.floor(n % 60)).padStart(2, '0');
+    $('tIdx').textContent = (M.index * (1 + M.rate * (1 - n / M.rebaseSec))).toFixed(6); ros.set({ progress: 1 - n / M.rebaseSec }); }, 200);
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.12 }); document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+})();
+</script>
+</body>
+</html>

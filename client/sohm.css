@@ -1,0 +1,40 @@
+/* sOHM · engraved-note look: violet line-work on black, Fraunces italic + Instrument Sans + DM Mono */
+:root{--bg:#050308;--p1:#0a0710;--p2:#100a1a;--p3:#1a112c;--ln:#22163a;--ln2:#3b2866;--ink:#f2edfc;--dim:#ab9fc6;--mut:#72668f;--acc:#9b6dff;--acc2:#cdb8ff;--up:#d9c2ff;--down:#ff6b8b;--hot:#f0a6ff;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;--mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:clip}
+a{color:var(--acc2);text-decoration:none}a:hover{color:#fff}
+::selection{background:var(--acc);color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+/* lace rule: the woven border band of a banknote */
+.lace{height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='18' viewBox='0 0 48 18'%3E%3Cg fill='none' stroke='%239b6dff' stroke-width='.7' opacity='.55'%3E%3Cpath d='M0 9c6-10 18-10 24 0s18 10 24 0'/%3E%3Cpath d='M0 9c6 10 18 10 24 0s18-10 24 0'/%3E%3Cpath d='M-12 9c6-10 18-10 24 0s18 10 24 0s18-10 24 0'/%3E%3Cpath d='M-12 9c6 10 18 10 24 0s18-10 24 0s18 10 24 0'/%3E%3Cpath d='M0 9h48' opacity='.5'/%3E%3C/g%3E%3C/svg%3E") repeat-x center;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+header.top{position:sticky;top:0;z-index:30;background:rgba(5,3,8,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.hrow{display:flex;align-items:center;gap:26px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:italic 500 25px/1 var(--serif);letter-spacing:-.02em;color:var(--ink)}.logo:hover{color:var(--ink)}.logo img{display:block}
+.tabs{display:flex;gap:22px;flex:1}.tab{color:var(--dim);font:500 14px var(--sans);padding:6px 0;cursor:pointer;user-select:none;border-bottom:1px solid transparent}.tab:hover{color:var(--ink)}.tab.on{color:var(--ink);border-bottom-color:var(--acc)}
+.wbox{display:flex;align-items:center;gap:12px}
+.net{display:flex;align-items:center;gap:8px;font:italic 400 14px var(--serif);color:var(--dim)}.net i{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.icb{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--ln2);border-radius:50%;color:var(--ink);font-size:14px}.icb:hover{border-color:var(--acc);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font:600 14px var(--sans);padding:10px 20px;cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s,color .15s,box-shadow .15s;white-space:nowrap}
+.btn.primary{background:var(--acc2);color:#0b0518}.btn.primary:hover{background:#fff;color:#0b0518;box-shadow:0 0 32px rgba(155,109,255,.55)}
+.btn.ghost{background:transparent;border-color:var(--ln2);color:var(--ink)}.btn.ghost:hover{border-color:var(--acc2);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+#connectBtn.connected{background:transparent;color:var(--acc2);border-color:var(--ln2);font-family:var(--mono);font-weight:400}
+/* panels: hairline frame with engraved corner ticks */
+.card{position:relative;background:linear-gradient(180deg,var(--p1),#07050c);border:1px solid var(--ln);padding:22px}
+.card:before,.card:after{content:'';position:absolute;width:9px;height:9px;border:1px solid var(--acc);opacity:.7;pointer-events:none}
+.card:before{left:-1px;top:-1px;border-right:0;border-bottom:0}.card:after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.pt{font:italic 500 22px/1.15 var(--serif);letter-spacing:-.01em}.ph{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.psub{color:var(--dim);font-size:14px;margin-top:8px;line-height:1.65}
+.row{display:flex;align-items:center}
+.note{border-left:2px solid var(--acc);background:rgba(155,109,255,.06);padding:12px 14px;color:var(--dim);font-size:13.5px;line-height:1.6;margin-top:16px}.note b{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#0d0817;border:1px solid var(--acc);color:var(--ink);font:500 13.5px var(--sans);padding:12px 20px;border-radius:999px;z-index:90;max-width:92vw;transition:all .25s;box-shadow:0 10px 50px rgba(155,109,255,.25)}.toast.show{opacity:1;transform:translate(-50%,0)}.toast.err{border-color:var(--down);box-shadow:0 10px 50px rgba(255,107,139,.2)}
+footer.foot{padding:34px 0 46px}footer.foot .wrap{display:flex;justify-content:space-between;gap:28px;align-items:flex-start;flex-wrap:wrap}footer.foot p{color:var(--mut);font-size:12.5px;max-width:660px;line-height:1.65}footer.foot p a{color:var(--dim)}
+@media(max-width:860px){header.top{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(5,3,8,.97)}.tabs.fixed{position:fixed;bottom:0;left:0;right:0;background:rgba(5,3,8,.97);border-top:1px solid var(--ln);justify-content:space-around;gap:0;padding:10px 6px calc(10px + env(safe-area-inset-bottom));z-index:40}.tabs.fixed .tab{font-size:12.5px;padding:6px 4px}.net{display:none}body.hasbar{padding-bottom:64px}.hrow{gap:12px;justify-content:space-between}}
+.wpick{position:fixed;inset:0;z-index:100;background:rgba(3,2,6,.78);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}
+.wbox2{background:var(--p1);border:1px solid var(--ln2);padding:26px;width:min(400px,100%);display:grid;gap:10px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.wbox2 .wopt,.wbox2 button{display:flex;align-items:center;gap:12px;background:var(--p2);border:1px solid var(--ln);color:var(--ink);font:600 15px var(--sans);padding:13px 14px;cursor:pointer;text-align:left}.wbox2 .wopt:hover,.wbox2 button:hover{border-color:var(--acc)}
+.wbox2 .wi{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font:italic 600 16px var(--serif)}
+.wbox2 .cx{justify-content:center;background:none;color:var(--dim);border-color:transparent}
+.wbox2 .inst{margin-left:auto;font:400 12px var(--mono);color:var(--dim)}
