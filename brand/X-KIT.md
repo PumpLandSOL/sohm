@@ -172,13 +172,13 @@ The dashboard reads its SOL, USDC and USDT balances from the chain every 20 seco
 $sOHM
 ```
 
-### 16. Comparison · 212 chars · media: `sohm-g11-compare.png`
+### 16. Market cap · 225 chars · media: `sohm-g11-compare.png`
 ```
-Olympus on Ethereum rebased three times a day. So did Wonderland on Avalanche.
+Two circles and a dot.
 
-sOHM rebases 288 times a day, and the transfer that bonds you in costs less than a cent.
+The large circle is Olympus at its peak: $4.35B. The second is Wonderland: $2.08B. The dot is sOHM on day one, at the pump.fun opening price.
 
-Same game, dealt on a faster table.
+To true scale, the dot would be too small to print.
 
 $sOHM
 ```
