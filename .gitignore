@@ -5,3 +5,4 @@ _studio/kit/
 data.json.bak
 data.json.tmp
 *.log
+_studio/frames-*/

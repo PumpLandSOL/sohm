@@ -12,7 +12,7 @@ const crypto = require('crypto');
 
 // ---------- PLACEHOLDERS: the only place the domain and the X handle are set (or use the env vars) ----------
 const SITE_URL = (process.env.SITE_URL || 'https://YOUR-DOMAIN.example').replace(/\/$/, '');
-const X_URL = process.env.X_URL || 'https://x.com/YOUR_X_HANDLE';
+const X_URL = process.env.X_URL || 'https://x.com/SolanaOHM';
 
 // private settings (TREASURY_WALLET, ADMIN_KEY…) can live in a git-ignored .env next to package.json; real env vars win
 try { for (const l of fs.readFileSync(path.join(__dirname, '..', '.env'), 'utf8').split(/\r?\n/)) { const m = l.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/); if (m && process.env[m[1]] === undefined) process.env[m[1]] = m[2]; } } catch (e) {}
