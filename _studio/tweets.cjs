@@ -3,6 +3,7 @@
 // No numbered how-to lists, no tick-box lists, no fork roll-calls (those belong to the eOHM kit).
 'use strict';
 const fs = require('fs'), path = require('path'), len = (s) => [...s].length;
+const SITE = 'https://solanaohm.xyz', LINK = new Set(['Key art', 'Rebase (video)', 'Getting started (video)', 'Getting started', 'Treasury', 'Launch (fill CA)']);
 const HANDLE = '@SolanaOHM', NAME = 'Solana OHM | $sOHM';
 const BIO = 'The (3,3) reserve of Solana. Stake to compound every 5 minutes. Bond SOL, USDT or USDC under market, every payment checked on-chain. $sOHM';
 const DEX = 'sOHM is the OHM-style (3,3) reserve currency of Solana. Stake sOHM to receive stOHM, which grows at every rebase, 288 times a day. Bond SOL, USDT or USDC to buy sOHM at 5 to 7% under the market price, vesting in a straight line over five days. Every stake and bond is a real Solana transaction that is read back from the chain before anything is credited, and each transaction counts once. Bond payments fill a treasury whose SOL, USDC and USDT balances are read from Solana every 20 seconds and shown live in the app. Fixed supply of 1,000,000,000. Connect with Phantom.';
@@ -107,8 +108,8 @@ CA:
 
 $sOHM`],
 ];
-let md = `# sOHM X kit\n\n## Handle\n\`\`\`\n${HANDLE}\n\`\`\`\n\n## Display name\n\`\`\`\n${NAME}\n\`\`\`\n\n## Bio (${len(BIO)}/160)\n\`\`\`\n${BIO}\n\`\`\`\n\n## DexScreener description\n\`\`\`\n${DEX}\n\`\`\`\n\n## Profile images\n- Avatar: \`sohm-pfp.png\`\n- Header: \`sohm-banner.png\`\n- Share image: \`sohm-og.png\`\n\n## Tweets (all ≤245)\n`;
-let bad = 0; T.forEach(([title, media, text], i) => { const n = len(text); if (n > 245) { bad++; console.log('TOO LONG', title, n); } if (!fs.existsSync(path.join(__dirname, '..', 'brand', media))) console.log('MISSING MEDIA', media); md += `\n### ${i + 1}. ${title} · ${n} chars · media: \`${media}\`\n\`\`\`\n${text}\n\`\`\`\n`; console.log(String(n).padStart(4), title); });
+let md = `# sOHM X kit\n\n## Handle\n\`\`\`\n${HANDLE}\n\`\`\`\n\n## Display name\n\`\`\`\n${NAME}\n\`\`\`\n\n## Bio (${len(BIO)}/160)\n\`\`\`\n${BIO}\n\`\`\`\n\n## DexScreener description\n\`\`\`\n${DEX}\n\`\`\`\n\n## Website\n\`\`\`\n${SITE}\n\`\`\`\n\n## Profile images\n- Avatar: \`sohm-pfp.png\`\n- Header: \`sohm-banner.png\`\n- Share image: \`sohm-og.png\`\n\n## Tweets (all ≤245)\n`;
+let bad = 0; T.forEach(([title, media, text0], i) => { const tail = '\n\n$sOHM', text = LINK.has(title) && text0.endsWith(tail) ? text0.slice(0, -tail.length) + '\n\n' + SITE + tail : text0, n = len(text); if (n > 245) { bad++; console.log('TOO LONG', title, n); } if (!fs.existsSync(path.join(__dirname, '..', 'brand', media))) console.log('MISSING MEDIA', media); md += `\n### ${i + 1}. ${title} · ${n} chars · media: \`${media}\`\n\`\`\`\n${text}\n\`\`\`\n`; console.log(String(n).padStart(4), title); });
 if (len(BIO) > 160) { bad++; console.log('BIO TOO LONG', len(BIO)); }
 if (/Q4yNAb/.test(md)) { bad++; console.log('TREASURY ADDRESS IN KIT'); }
 fs.writeFileSync(path.join(__dirname, '..', 'brand', 'X-KIT.md'), md); console.log(T.length, 'tweets', bad ? 'FAILED' : 'ok', 'bio', len(BIO)); process.exit(bad ? 1 : 0);

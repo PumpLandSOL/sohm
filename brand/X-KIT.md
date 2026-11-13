@@ -20,6 +20,11 @@ The (3,3) reserve of Solana. Stake to compound every 5 minutes. Bond SOL, USDT o
 sOHM is the OHM-style (3,3) reserve currency of Solana. Stake sOHM to receive stOHM, which grows at every rebase, 288 times a day. Bond SOL, USDT or USDC to buy sOHM at 5 to 7% under the market price, vesting in a straight line over five days. Every stake and bond is a real Solana transaction that is read back from the chain before anything is credited, and each transaction counts once. Bond payments fill a treasury whose SOL, USDC and USDT balances are read from Solana every 20 seconds and shown live in the app. Fixed supply of 1,000,000,000. Connect with Phantom.
 ```
 
+## Website
+```
+https://solanaohm.xyz
+```
+
 ## Profile images
 - Avatar: `sohm-pfp.png`
 - Header: `sohm-banner.png`
@@ -38,11 +43,13 @@ The (3,3) reserve of Solana.
 $sOHM
 ```
 
-### 2. Key art · 184 chars · media: `sohm-g01-keyart.png`
+### 2. Key art · 207 chars · media: `sohm-g01-keyart.png`
 ```
 Meet sOHM.
 
 A reserve currency for Solana with two doors. Stake, and your balance grows every five minutes. Bond, and you buy in under the market price while the treasury fills.
+
+https://solanaohm.xyz
 
 $sOHM
 ```
@@ -56,11 +63,13 @@ One billion in the series and not one more. Accepted at the bond window in SOL, 
 $sOHM
 ```
 
-### 4. Rebase (video) · 173 chars · media: `sohm-rebase-12s.mp4`
+### 4. Rebase (video) · 196 chars · media: `sohm-rebase-12s.mp4`
 ```
 Watch one position for a few epochs.
 
 1,000,000 stOHM. Five minutes pass, the index ticks, and about 74 more appear. Then again. And again, 288 times before tomorrow.
+
+https://solanaohm.xyz
 
 $sOHM
 ```
@@ -143,7 +152,7 @@ Same rate the whole way. The curve bends because each rebase pays out on the stO
 $sOHM
 ```
 
-### 13. Getting started (video) · 191 chars · media: `sohm-start-15s.mp4`
+### 13. Getting started (video) · 214 chars · media: `sohm-start-15s.mp4`
 ```
 Getting into sOHM is three steps in Phantom.
 
@@ -151,23 +160,29 @@ Sign a free message to prove the wallet is yours. Send SOL for your bond. Then, 
 
 No forms. No account.
 
+https://solanaohm.xyz
+
 $sOHM
 ```
 
-### 14. Getting started · 187 chars · media: `sohm-g08-start.png`
+### 14. Getting started · 210 chars · media: `sohm-g08-start.png`
 ```
 New here? Start at the bond window, not the market.
 
 Bonding SOL prices your sOHM 7% under market. Staking it afterwards puts it on the five-minute rebase. One click joins the two.
 
+https://solanaohm.xyz
+
 $sOHM
 ```
 
-### 15. Treasury · 211 chars · media: `sohm-g09-treasury.png`
+### 15. Treasury · 234 chars · media: `sohm-g09-treasury.png`
 ```
 Where does bond money go? One treasury on Solana.
 
 The dashboard reads its SOL, USDC and USDT balances from the chain every 20 seconds, so the figure you see is a live reading and never a typed-in number.
+
+https://solanaohm.xyz
 
 $sOHM
 ```
@@ -183,13 +198,15 @@ To true scale, the dot would be too small to print.
 $sOHM
 ```
 
-### 17. Launch (fill CA) · 144 chars · media: `sohm-g10-live.png`
+### 17. Launch (fill CA) · 167 chars · media: `sohm-g10-live.png`
 ```
 $sOHM is live on Solana, and staking just opened.
 
 Stake to join the five-minute rebase. Bond SOL, USDT or USDC to buy under market.
 
 CA:
+
+https://solanaohm.xyz
 
 $sOHM
 ```

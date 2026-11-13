@@ -1,6 +1,6 @@
 // shared look for the sOHM kit: engraved-note page head, mark, lace rule, and a seekable guilloché rosette
 'use strict';
-const X = '@SolanaOHM', TICK = '$sOHM';
+const X = '@SolanaOHM', TICK = '$sOHM', SITE = 'solanaohm.xyz';
 const FONTS = `<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">`;
 const MARK = (s = 40) => `<svg width="${s}" height="${s}" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#050308"/><circle cx="32" cy="32" r="29.5" fill="none" stroke="#9b6dff" stroke-width="1"/><circle cx="32" cy="32" r="26" fill="none" stroke="#cdb8ff" stroke-width="2.2" stroke-dasharray=".6 3.48" stroke-linecap="round"/><path d="M17 46.5h11.5v-5.2c-5.2-2.6-8.3-7.6-8.3-13.4C20.2 20.3 25.3 15 32 15s11.8 5.3 11.8 12.9c0 5.800-3.1 10.8-8.3 13.4v5.2H47" fill="none" stroke="#cdb8ff" stroke-width="4" stroke-linejoin="round"/></svg>`;
 const LACE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='18' viewBox='0 0 48 18'%3E%3Cg fill='none' stroke='%239b6dff' stroke-width='.7' opacity='.6'%3E%3Cpath d='M0 9c6-10 18-10 24 0s18 10 24 0'/%3E%3Cpath d='M0 9c6 10 18 10 24 0s18-10 24 0'/%3E%3Cpath d='M-12 9c6-10 18-10 24 0s18 10 24 0s18-10 24 0'/%3E%3Cpath d='M-12 9c6 10 18 10 24 0s18-10 24 0s18 10 24 0'/%3E%3Cpath d='M0 9h48' opacity='.5'/%3E%3C/g%3E%3C/svg%3E")`;
@@ -18,7 +18,7 @@ body{width:${W}px;height:${H}px;overflow:hidden;position:relative;background:#05
 .foot{position:absolute;left:70px;right:70px;bottom:44px;display:flex;justify-content:space-between;align-items:center}
 .mk{display:flex;align-items:center;gap:14px;font:italic 500 36px 'Fraunces',serif;letter-spacing:-.02em;color:#f2edfc}`;
 const HEAD = (W, H, extra = '') => `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>${CSS(W, H)}${extra}</style></head><body><canvas id="cv"></canvas>`;
-const FOOT = () => `<div class="foot"><span class="mk">${MARK(44)}sOHM</span><span class="cap d">${X} · <span style="color:#cdb8ff">${TICK}</span></span></div>`;
+const FOOT = () => `<div class="foot"><span class="mk">${MARK(44)}sOHM</span><span class="cap d">${SITE} · ${X} · <span style="color:#cdb8ff">${TICK}</span></span></div>`;
 // the rosette, as a pure function of time so every frame is reproducible.
 // rosette(g, {cx, cy, S, t, a (overall alpha), progress (rebase arc 0..1), text, reveal (0..1 bands drawn in), well (dark centre 0..1)})
 const ROSETTE = `<script>
@@ -36,4 +36,4 @@ window.RING_TEXT='SOHM · THE (3,3) RESERVE OF SOLANA · STAKE · BOND · COMPOU
 window.cvInit=function(){const cv=document.getElementById('cv'),W=cv.clientWidth,H=cv.clientHeight,d=window.__dpr||1;cv.width=W*d;cv.height=H*d;const g=cv.getContext('2d');g.setTransform(d,0,0,d,0,0);return{g,W,H};};
 window.fontsReady=function(){return Promise.all([document.fonts.load('400 20px "DM Mono"'),document.fonts.load('italic 400 40px "Fraunces"'),document.fonts.load('400 40px "Fraunces"'),document.fonts.load('500 20px "Instrument Sans"'),document.fonts.load('italic 500 40px "Fraunces"')]).then(()=>document.fonts.ready);};
 </script>`;
-module.exports = { X, TICK, FONTS, MARK, LACE, CSS, HEAD, FOOT, ROSETTE };
+module.exports = { X, TICK, SITE, FONTS, MARK, LACE, CSS, HEAD, FOOT, ROSETTE };

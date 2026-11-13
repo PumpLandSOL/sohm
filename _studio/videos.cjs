@@ -1,6 +1,6 @@
 // sOHM videos (frame-exact, 1920x1080, 30 fps).  node _studio/videos.cjs [name]   ·   node _studio/videos.cjs still <name> <t,t,…>
 'use strict';
-const fs = require('fs'), path = require('path'), { execFileSync } = require('child_process'), { open } = require('./cdp.cjs'), { X, HEAD, ROSETTE } = require('./lib.cjs');
+const fs = require('fs'), path = require('path'), { execFileSync } = require('child_process'), { open } = require('./cdp.cjs'), { X, SITE, HEAD, ROSETTE } = require('./lib.cjs');
 const B = path.join(__dirname, '..', 'brand'), K = path.join(__dirname, 'kit'), FPS = 30, url = (f) => 'file:///' + f.split(path.sep).join('/');
 const APY = 250000, EPY = 31557600 / 300, RATE = Math.pow(1 + APY / 100, 1 / EPY) - 1;
 const VCSS = `body{font-size:36px}.s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0}
@@ -13,7 +13,7 @@ const show=(id,t,a,b,f)=>{const o=win(t,a,b,f),el=$(id);el.style.opacity=o;el.st
 const fmt=(n,d=0)=>Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});const RATE=${RATE};let G=null;
 // end card: the rosette weaves itself in around the wordmark while the rebase arc closes
 const end=(t,a)=>{const z=t-a;if(z<0)return;rosette(G,{cx:960,cy:500,S:405,t:t,reveal:e(z/1.8),well:1,progress:cl((z-.5)/3.2),text:RING_TEXT,a:cl(z/.5)});const o=cl((z-.3)/.7);['zw','zl','zf'].forEach((k,i)=>{const q=cl((z-.3-i*.25)/.7);$(k).style.opacity=q;$(k).style.filter='blur('+((1-q)*10).toFixed(1)+'px)';});};`;
-const page = (body, line, seek, endAt) => HEAD(1920, 1080, VCSS) + body + `<div id="zw"><div class="cap">The (3,3) reserve of Solana</div><div class="wm" style="font-size:300px;margin-top:8px">sOHM</div></div><div id="zl" class="ser it" style="font:italic 400 56px Fraunces;color:#cdb8ff">${line}</div><div id="zf" class="cap d">${X} · <span style="color:#cdb8ff">$sOHM</span></div>` + ROSETTE +
+const page = (body, line, seek, endAt) => HEAD(1920, 1080, VCSS) + body + `<div id="zw"><div class="cap">The (3,3) reserve of Solana</div><div class="wm" style="font-size:300px;margin-top:8px">sOHM</div></div><div id="zl" class="ser it" style="font:italic 400 56px Fraunces;color:#cdb8ff">${line}</div><div id="zf" class="cap d">${SITE} · ${X} · <span style="color:#cdb8ff">$sOHM</span></div>` + ROSETTE +
   `<script>${JS}window.__seek=(t)=>{G.clearRect(0,0,1920,1080);${seek}end(t,${endAt});};fontsReady().then(()=>{G=cvInit().g;window.__seek(0);window.__ready=true;});</script></body></html>`;
 
 const MX = [['(3, 3)', '(1, 1)', '(−1, 1)'], ['(1, 1)', '(1, 1)', '(−1, 1)'], ['(1, −1)', '(1, −1)', '(−3, −3)']], ML = ['stake', 'bond', 'sell'];
