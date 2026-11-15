@@ -73,6 +73,10 @@ const EVM = '0x6A690F711928E8b938Fb5FE38F6fc2B8164Abc97';
       else { ok('intent returns token accounts and a blockhash', I.decimals === 6 && S.isWallet(I.source) && S.isWallet(I.dest), I);
         const r = await sim(C.splTransferMessage(payer, I.source, I.dest, I.mint, I.program, I.blockhash, C.units('1', I.decimals), I.decimals)); ok('USDC TransferChecked message simulates cleanly on mainnet', r.err === null, r.err || r.logs); }
     } catch (e) { skipT('USDC transfer simulation', e.message); }
+    try { // the treasury's token-account address is derived, not looked up: it must reproduce one that exists on-chain
+      const own = '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM', usdc = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'; const acc = (await rpc('getTokenAccountsByOwner', [own, { mint: usdc }, { encoding: 'jsonParsed' }])).value.map((x) => x.pubkey);
+      if (!acc.length) skipT('token-account derivation', 'reference wallet holds no USDC'); else ok('derived token-account address matches the one on-chain', acc.includes(S.ataAddress(own, usdc, 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA')));
+    } catch (e) { skipT('token-account derivation', e.message); }
     try { // find a real, recent, plain SOL transfer and check readPayment reports exactly what moved
       const sigs = await rpc('getSignaturesForAddress', [TREASURY, { limit: 25 }]); let done = false;
       for (const s of sigs) { if (s.err) continue; const tx = await rpc('getTransaction', [s.signature, { encoding: 'jsonParsed', maxSupportedTransactionVersion: 0 }]); if (!tx) continue;

@@ -90,6 +90,20 @@ async function tokenAccounts(owner, mint) {
   return (r.value || []).map((a) => ({ pubkey: a.pubkey, program: a.account.owner, amount: +a.account.data.parsed.info.tokenAmount.uiAmountString || 0, frozen: a.account.data.parsed.info.state === 'frozen', decimals: a.account.data.parsed.info.tokenAmount.decimals })).sort((a, b) => b.amount - a.amount);
 }
 const sumAcc = (l) => l.reduce((s, x) => s + x.amount, 0);
+// ---------- associated token accounts ----------
+// The canonical token account for (owner, mint) is a program-derived address: sha256(owner, token program, mint, bump,
+// ATA program, "ProgramDerivedAddress") for the highest bump whose hash is NOT a point on the ed25519 curve.
+const ATA_PROGRAM = 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
+const P25519 = (1n << 255n) - 19n, modp = (a) => ((a % P25519) + P25519) % P25519;
+const powp = (b, e) => { let r = 1n; b = modp(b); while (e > 0n) { if (e & 1n) r = (r * b) % P25519; b = (b * b) % P25519; e >>= 1n; } return r; };
+const D25519 = modp(-121665n * powp(121666n, P25519 - 2n));
+function onCurve(buf) { let y = 0n; for (let i = 31; i >= 0; i--) y = (y << 8n) | BigInt(i === 31 ? buf[i] & 127 : buf[i]); if (y >= P25519) return false;
+  const y2 = (y * y) % P25519, u = modp(y2 - 1n), v = modp(D25519 * y2 + 1n), x = (u * powp(v, 3n) % P25519) * powp(u * powp(v, 7n), (P25519 - 5n) / 8n) % P25519, vx2 = (v * x % P25519) * x % P25519;
+  return vx2 === u || vx2 === modp(-u); }
+function b58enc(buf) { let n = 0n; for (const b of buf) n = n * 256n + BigInt(b); let o = ''; while (n > 0n) { o = B58[Number(n % 58n)] + o; n /= 58n; } for (const b of buf) { if (b === 0) o = '1' + o; else break; } return o; }
+function ataAddress(owner, mint, tokenProgram) { const seeds = [b58dec(owner), b58dec(tokenProgram), b58dec(mint)];
+  for (let bump = 255; bump >= 0; bump--) { const h = crypto.createHash('sha256').update(Buffer.concat([...seeds, Buffer.from([bump]), b58dec(ATA_PROGRAM), Buffer.from('ProgramDerivedAddress')])).digest(); if (!onCurve(h)) return b58enc(h); }
+  throw new Error('no token account address'); }
 async function pollTreasury() {
   try { CHAIN.slot = await rpc('getSlot', [{ commitment: 'confirmed' }]); CHAIN.slotAt = Date.now(); CHAIN.ok = true; } catch (e) { CHAIN.ok = false; }
   if (!TREASURY_WALLET) return;
@@ -231,9 +245,10 @@ async function intent(wallet, asset) {
   if (asset === 'native') { const bal = (await rpc('getBalance', [wallet, { commitment: 'confirmed' }])).value / 1e9; return { native: true, treasury: TREASURY_WALLET, blockhash: bh, balance: bal, decimals: 9 }; }
   // a wallet can own several token accounts for one mint, and an issuer can freeze one: use the largest usable account on each side
   const [dst, src] = (await Promise.all([tokenAccounts(TREASURY_WALLET, asset), tokenAccounts(wallet, asset)])).map((l) => l.filter((a) => !a.frozen));
-  if (!dst[0]) throw 'this market is not open yet — bond with SOL for now';
   if (!src[0] || !src[0].amount) throw 'this wallet holds none of this token on Solana';
-  return { native: false, treasury: TREASURY_WALLET, source: src[0].pubkey, dest: dst[0].pubkey, mint: asset, decimals: src[0].decimals, program: src[0].program, blockhash: bh, balance: src[0].amount };
+  // first payment in this token: the transfer also opens the treasury's token account (the payer covers its one-time rent, about 0.002 SOL)
+  const dest = dst[0] ? dst[0].pubkey : ataAddress(TREASURY_WALLET, asset, src[0].program);
+  return { native: false, treasury: TREASURY_WALLET, source: src[0].pubkey, dest, createDest: !dst[0], ataProgram: ATA_PROGRAM, mint: asset, decimals: src[0].decimals, program: src[0].program, blockhash: bh, balance: src[0].amount };
 }
 
 // ---------- http ----------
@@ -377,4 +392,4 @@ function start() {
   return server.listen(PORT, () => console.log('sOHM on Solana · :' + PORT + ' · rebase ' + REBASE_SEC + 's' + (TREASURY_WALLET ? '' : ' · TREASURY_WALLET not set (bonds closed)')));
 }
 if (require.main === module) start();
-module.exports = { start, server, readPayment, sessionMsg, b58dec, isWallet, isSig, saveNow };
+module.exports = { start, server, readPayment, sessionMsg, b58dec, isWallet, isSig, saveNow, ataAddress };

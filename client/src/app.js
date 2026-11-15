@@ -82,11 +82,17 @@
     const K = [owner, source, dest, mint, program].map(b58dec);
     return new Uint8Array([1, 0, 2, 5, ...K.flat(), ...b58dec(blockhash), 1, 4, 4, 1, 3, 2, 0, 10, 12, ...u64(amount), decimals]);
   }
+  // same transfer, preceded by "create the destination token account if it is missing" (Associated Token program, idempotent).
+  // keys [payer, source, dest, treasury owner, mint, system program, token program, ATA program]
+  function splCreateTransferMessage(owner, source, dest, mint, program, destOwner, ataProgram, blockhash, amount, decimals) {
+    const K = [owner, source, dest, destOwner, mint, '11111111111111111111111111111111', program, ataProgram].map(b58dec);
+    return new Uint8Array([1, 0, 5, 8, ...K.flat(), ...b58dec(blockhash), 2, 7, 6, 0, 2, 3, 4, 5, 6, 1, 1, 6, 4, 1, 4, 2, 0, 10, 12, ...u64(amount), decimals]);
+  }
   async function pay(kind, market, raw) {
     const ph = sol(); if (!ph || !ph.request) throw new Error('open Phantom to send this payment');
     const I = await post('/api/intent', { wallet, kind, market }); if (I.error) throw new Error(I.error);
     if (parseFloat(raw) > I.balance) throw new Error('this wallet holds ' + tok(I.balance) + ' — not enough for that amount');
-    const msg = I.native ? solTransferMessage(wallet, I.treasury, I.blockhash, units(raw, 9)) : splTransferMessage(wallet, I.source, I.dest, I.mint, I.program, I.blockhash, units(raw, I.decimals), I.decimals);
+    const msg = I.native ? solTransferMessage(wallet, I.treasury, I.blockhash, units(raw, 9)) : I.createDest ? splCreateTransferMessage(wallet, I.source, I.dest, I.mint, I.program, I.treasury, I.ataProgram, I.blockhash, units(raw, I.decimals), I.decimals) : splTransferMessage(wallet, I.source, I.dest, I.mint, I.program, I.blockhash, units(raw, I.decimals), I.decimals);
     const r = await ph.request({ method: 'signAndSendTransaction', params: { message: b58enc(msg) } }); return r.signature || r;
   }
   // the server reads the confirmed transaction from Solana; keep asking until it is there
