@@ -198,7 +198,18 @@ To true scale, the dot would be too small to print.
 $sOHM
 ```
 
-### 17. Launch (fill CA) · 167 chars · media: `sohm-g10-live.png`
+### 17. App demo (video) · 222 chars · media: `sohm-app-demo.mp4`
+```
+This is the sOHM app, recorded on the live site.
+
+The dashboard reads the treasury off Solana. A wallet signs in with one free signature. Then a real quote: 1 SOL buys sOHM at 7% under market.
+
+https://solanaohm.xyz
+
+$sOHM
+```
+
+### 18. Launch (fill CA) · 167 chars · media: `sohm-g10-live.png`
 ```
 $sOHM is live on Solana, and staking just opened.
 

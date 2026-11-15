@@ -100,6 +100,13 @@ The large circle is Olympus at its peak: $4.35B. The second is Wonderland: $2.08
 To true scale, the dot would be too small to print.
 
 $sOHM`],
+['App demo (video)', 'sohm-app-demo.mp4', `This is the sOHM app, recorded on the live site.
+
+The dashboard reads the treasury off Solana. A wallet signs in with one free signature. Then a real quote: 1 SOL buys sOHM at 7% under market.
+
+${SITE}
+
+$sOHM`],
 ['Launch (fill CA)', 'sohm-g10-live.png', `$sOHM is live on Solana, and staking just opened.
 
 Stake to join the five-minute rebase. Bond SOL, USDT or USDC to buy under market.
