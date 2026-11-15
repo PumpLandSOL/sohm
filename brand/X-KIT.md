@@ -10,9 +10,9 @@
 Solana OHM | $sOHM
 ```
 
-## Bio (138/160)
+## Bio (148/160)
 ```
-The (3,3) reserve of Solana. Stake to compound every 5 minutes. Bond SOL, USDT or USDC under market, every payment checked on-chain. $sOHM
+(3,3) on Solana. OHM hit $4.35B on Ethereum, TIME $2.08B on Avalanche. This is Solana's reserve: 288 rebases a day, SOL bonds 7% under market. $sOHM
 ```
 
 ## DexScreener description
@@ -32,188 +32,190 @@ https://solanaohm.xyz
 
 ## Tweets (all ≤245)
 
-### 1. Pinned · hype (video) · 233 chars · media: `sohm-hype-14s.mp4`
+### 1. Pinned · hype (video) · 221 chars · media: `sohm-hype-14s.mp4`
 ```
-A banknote earns trust from its engraving: fine lines that are hard to copy.
+Olympus went from zero to $4.35B on one idea: (3,3).
 
-sOHM earns it another way. Every payment into the reserve is checked against Solana before a single token is credited.
+Wonderland took the same idea to Avalanche and hit $2.08B.
 
-The (3,3) reserve of Solana.
+Now it's Solana's turn, with rebases every five minutes instead of every eight hours.
+
+sOHM is open.
 
 $sOHM
 ```
 
-### 2. Key art · 207 chars · media: `sohm-g01-keyart.png`
+### 2. Key art · 237 chars · media: `sohm-g01-keyart.png`
 ```
-Meet sOHM.
+(3,3) is back, and this time it lives on Solana.
 
-A reserve currency for Solana with two doors. Stake, and your balance grows every five minutes. Bond, and you buy in under the market price while the treasury fills.
+Stake sOHM and your balance compounds every five minutes. Bond SOL and buy in 7% under market. It's the game that built a $4.35B protocol, on a faster chain.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 3. The note · 198 chars · media: `sohm-g02-note.png`
+### 3. The note · 191 chars · media: `sohm-g02-note.png`
 ```
-If sOHM were printed, this is the note.
+TIME was Avalanche's OHM. KLIMA was Polygon's. HEC was Fantom's.
 
-One billion in the series and not one more. Accepted at the bond window in SOL, USDT and USDC. Compounded every five minutes for anyone who stakes it.
+sOHM is Solana's: one billion supply, fixed forever, launching on pump.fun where every buyer starts on the same curve.
 
 $sOHM
 ```
 
-### 4. Rebase (video) · 196 chars · media: `sohm-rebase-12s.mp4`
+### 4. Rebase (video) · 222 chars · media: `sohm-rebase-12s.mp4`
 ```
-Watch one position for a few epochs.
+Olympus paid its stakers three times a day, and that was enough to carry it to $4.35B.
 
-1,000,000 stOHM. Five minutes pass, the index ticks, and about 74 more appear. Then again. And again, 288 times before tomorrow.
+sOHM pays 288 times a day. Every five minutes the index steps up and every staked balance grows with it.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 5. Staking · 220 chars · media: `sohm-g03-stake.png`
+### 5. Staking · 219 chars · media: `sohm-g03-stake.png`
 ```
-You don't claim staking rewards on sOHM. There's nothing to click.
+250,000% APY sounds like 2021 because it is the 2021 design.
 
-Your stOHM balance simply gets larger at every rebase, at the same moment as everyone else's. At the current rate that comes to about 2.2% a day.
+On sOHM that works out to about 2.2% a day, paid in sOHM and compounded every five minutes without you touching a thing.
+
+Stakers are the whole point.
 
 $sOHM
 ```
 
-### 6. Bond (video) · 207 chars · media: `sohm-bond-13s.mp4`
+### 6. Bond (video) · 194 chars · media: `sohm-bond-13s.mp4`
 ```
-The bond window, start to finish.
+The old OHM hands rarely bought the market. They bonded.
 
-You send 1 SOL. It settles in the treasury. The transaction is read back from Solana. You're credited sOHM priced 7% under market, unlocking evenly across five days.
+On sOHM a bond is SOL in and sOHM out at 7% under market, unlocked across five days. Every one of them makes the treasury bigger.
 
 $sOHM
 ```
 
-### 7. Bond markets · 224 chars · media: `sohm-g04-bonds.png`
+### 7. Bond markets · 205 chars · media: `sohm-g04-bonds.png`
 ```
-Pick your window.
+Why pay market price?
 
-SOL gets you sOHM at 7% under market. USDT, 6%. USDC, 5%.
+SOL bonds price sOHM 7% lower. USDT bonds, 6%. USDC bonds, 5%.
 
-Whichever you choose, it unlocks in a straight line over five days, and what's unlocked can roll into staking without leaving the protocol.
+Each bond fills the treasury behind the token. That loop is what took Olympus and Wonderland into the billions.
 
 $sOHM
 ```
 
-### 8. Verification · 231 chars · media: `sohm-g05-verify.png`
+### 8. Verification · 216 chars · media: `sohm-g05-verify.png`
 ```
-We don't ask you to tell us what you paid.
+In 2021 you took a fork's dashboard on faith.
 
-The app sends only a transaction signature. The confirmed transaction is pulled from Solana, and you're credited what actually reached the treasury. Each signature counts one time.
+sOHM reads every payment back from Solana before crediting it, and reads its treasury from the chain every 20 seconds. What the app shows is what the chain holds.
 
 $sOHM
 ```
 
-### 9. (3,3) (video) · 218 chars · media: `sohm-33-12s.mp4`
+### 9. (3,3) (video) · 204 chars · media: `sohm-33-12s.mp4`
 ```
-Nine squares, two players.
+Remember when half of crypto Twitter had (3,3) in their name?
 
-Sell together and both lose. Sell alone and the other holder eats it. Stake together and both balances climb.
+It was a strategy, not a joke: if nobody sells, everybody compounds. It took OHM to $1,415 a token.
 
-Olympus named that last square (3,3). It still describes the whole game.
+Time to put it back in your name.
 
 $sOHM
 ```
 
-### 10. Payoff grid · 206 chars · media: `sohm-g06-matrix.png`
+### 10. Payoff grid · 213 chars · media: `sohm-g06-matrix.png`
 ```
-The grid behind the ticker.
+This grid is why OHM forks ran as hard as they did.
 
-Staking helps you and the next holder. Bonding helps you and the treasury. Selling helps you a little and costs someone else.
-
-The protocol is built to pay the first two.
+Staking pays you and the holder next to you. Selling pays a little and costs everyone else. Once a community sees that, supply stops reaching the market.
 
 $sOHM
 ```
 
-### 11. Compounding (video) · 210 chars · media: `sohm-compound-12s.mp4`
+### 11. Compounding (video) · 192 chars · media: `sohm-compound-12s.mp4`
 ```
-Thirty days, one position, no deposits after the first.
+Stake 1,000,000 sOHM and leave it alone for a month.
 
-1,000,000 stOHM becomes 1,901,542 at the current rate. Nothing dramatic happens on any single day. It's 8,640 small rebases stacked on each other.
+At the current rate you're holding 1,901,542. That's +90% in sOHM from sitting still, and it's why (3,3) holders sat still in 2021.
 
 $sOHM
 ```
 
-### 12. Compounding curve · 159 chars · media: `sohm-g07-compound.png`
+### 12. Compounding curve · 191 chars · media: `sohm-g07-compound.png`
 ```
-Day 1: +2.2%. Day 7: +16.2%. Day 30: +90.2%.
++2.2% in a day. +16.2% in a week. +90.2% in a month.
 
-Same rate the whole way. The curve bends because each rebase pays out on the stOHM the previous one added.
+That's the sOHM staking curve at the current rate, compounding 288 times a day. The earlier you stake, the more rebases you catch.
 
 $sOHM
 ```
 
-### 13. Getting started (video) · 214 chars · media: `sohm-start-15s.mp4`
+### 13. Getting started (video) · 198 chars · media: `sohm-start-15s.mp4`
 ```
-Getting into sOHM is three steps in Phantom.
+Wonderland's TIME hit $10,063. Snowbank hit $8,356. KlimaDAO hit $3,777.
 
-Sign a free message to prove the wallet is yours. Send SOL for your bond. Then, as it vests, press claim and stake.
-
-No forms. No account.
+Getting into Solana's version takes a minute: connect Phantom, bond SOL, then claim and stake.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 14. Getting started · 210 chars · media: `sohm-g08-start.png`
+### 14. Getting started · 216 chars · media: `sohm-g08-start.png`
 ```
-New here? Start at the bond window, not the market.
+The cheapest sOHM is at the bond window, 7% under whatever the market says.
 
-Bonding SOL prices your sOHM 7% under market. Staking it afterwards puts it on the five-minute rebase. One click joins the two.
+Bond SOL, stake it as it vests, and you're on the five-minute rebase before most people have found the chart.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 15. Treasury · 234 chars · media: `sohm-g09-treasury.png`
+### 15. Treasury · 221 chars · media: `sohm-g09-treasury.png`
 ```
-Where does bond money go? One treasury on Solana.
+Every OHM fork lived or died by its treasury.
 
-The dashboard reads its SOL, USDC and USDT balances from the chain every 20 seconds, so the figure you see is a live reading and never a typed-in number.
+sOHM's is one wallet on Solana, and the app reads its SOL, USDC and USDT straight from the chain every 20 seconds. Bonds fill it. Watch it grow.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 16. Market cap · 225 chars · media: `sohm-g11-compare.png`
+### 16. Market cap · 201 chars · media: `sohm-g11-compare.png`
 ```
-Two circles and a dot.
+Solana has run this play before. Invictus, its 2021 OHM fork, traded as high as $1,425.
 
-The large circle is Olympus at its peak: $4.35B. The second is Wonderland: $2.08B. The dot is sOHM on day one, at the pump.fun opening price.
+Olympus peaked at $4.35B. Wonderland at $2.08B.
 
-To true scale, the dot would be too small to print.
+sOHM is the dot at the bottom of that chart, on day one.
 
 $sOHM
 ```
 
-### 17. App demo (video) · 222 chars · media: `sohm-app-demo.mp4`
+### 17. App demo (video) · 194 chars · media: `sohm-app-demo.mp4`
 ```
-This is the sOHM app, recorded on the live site.
+No waitlist and no "coming soon". This is sOHM running on Solana right now.
 
-The dashboard reads the treasury off Solana. A wallet signs in with one free signature. Then a real quote: 1 SOL buys sOHM at 7% under market.
+Live APY, live treasury, and a real bond quote: 1 SOL gets you sOHM at 7% under market.
 
 https://solanaohm.xyz
 
 $sOHM
 ```
 
-### 18. Launch (fill CA) · 167 chars · media: `sohm-g10-live.png`
+### 18. Launch (fill CA) · 200 chars · media: `sohm-g10-live.png`
 ```
-$sOHM is live on Solana, and staking just opened.
+$sOHM is live on Solana.
 
-Stake to join the five-minute rebase. Bond SOL, USDT or USDC to buy under market.
+OHM peaked at $4.35B. TIME peaked at $2.08B. This one starts today, at the pump.fun opening price.
+
+Staking is open. Bonds are open. (3,3).
 
 CA:
 
