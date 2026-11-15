@@ -105,6 +105,39 @@ Live APY, live treasury, and a real bond quote: 1 SOL gets you sOHM at 7% under 
 ${SITE}
 
 $sOHM`],
+['The sector', 'sohm-g12-sector.png', `At the top of the last cycle, (3,3) was an $8.03B sector.
+
+Olympus was $4.35B of it. Wonderland was $2.08B. Every other fork split what was left.
+
+The sector starts over this cycle, and Solana's entry is sOHM.
+
+$sOHM`],
+['The math', 'sohm-g13-ladder.png', `Run the numbers on Olympus' $4.35B peak.
+
+1% of it is a $43.5M market cap. 10% of it is $435M.
+
+sOHM opens at the very bottom of the pump.fun curve. That's the whole pitch.
+
+$sOHM`],
+['Launch to peak', 'sohm-g14-speed.png', `Wonderland launched in September 2021 and was a $2.08B protocol by November.
+
+Olympus reached $4.35B inside its first year.
+
+(3,3) doesn't move slowly when it moves. sOHM is on day one.
+
+$sOHM`],
+['(3,3) in your name', 'sohm-g15-33.png', `The quickest way to spot who's early is to check the name.
+
+(3,3) next to a handle meant you were staked and not selling. It's how a $4.35B community recognised its own.
+
+sOHM stakers, you know what to do.
+
+$sOHM`],
+['The bond edge', 'sohm-g16-edge.png', `$1,000 of SOL at the sOHM bond window comes back as $1,075 of sOHM.
+
+That's the 7% discount doing its job. It unlocks over five days, and every dollar of your SOL lands in the treasury behind the token.
+
+$sOHM`],
 ['Launch (fill CA)', 'sohm-g10-live.png', `$sOHM is live on Solana.
 
 OHM peaked at $4.35B. TIME peaked at $2.08B. This one starts today, at the pump.fun opening price.

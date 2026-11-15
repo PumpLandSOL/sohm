@@ -207,7 +207,60 @@ https://solanaohm.xyz
 $sOHM
 ```
 
-### 18. Launch (fill CA) · 200 chars · media: `sohm-g10-live.png`
+### 18. The sector · 216 chars · media: `sohm-g12-sector.png`
+```
+At the top of the last cycle, (3,3) was an $8.03B sector.
+
+Olympus was $4.35B of it. Wonderland was $2.08B. Every other fork split what was left.
+
+The sector starts over this cycle, and Solana's entry is sOHM.
+
+$sOHM
+```
+
+### 19. The math · 179 chars · media: `sohm-g13-ladder.png`
+```
+Run the numbers on Olympus' $4.35B peak.
+
+1% of it is a $43.5M market cap. 10% of it is $435M.
+
+sOHM opens at the very bottom of the pump.fun curve. That's the whole pitch.
+
+$sOHM
+```
+
+### 20. Launch to peak · 192 chars · media: `sohm-g14-speed.png`
+```
+Wonderland launched in September 2021 and was a $2.08B protocol by November.
+
+Olympus reached $4.35B inside its first year.
+
+(3,3) doesn't move slowly when it moves. sOHM is on day one.
+
+$sOHM
+```
+
+### 21. (3,3) in your name · 212 chars · media: `sohm-g15-33.png`
+```
+The quickest way to spot who's early is to check the name.
+
+(3,3) next to a handle meant you were staked and not selling. It's how a $4.35B community recognised its own.
+
+sOHM stakers, you know what to do.
+
+$sOHM
+```
+
+### 22. The bond edge · 209 chars · media: `sohm-g16-edge.png`
+```
+$1,000 of SOL at the sOHM bond window comes back as $1,075 of sOHM.
+
+That's the 7% discount doing its job. It unlocks over five days, and every dollar of your SOL lands in the treasury behind the token.
+
+$sOHM
+```
+
+### 23. Launch (fill CA) · 200 chars · media: `sohm-g10-live.png`
 ```
 $sOHM is live on Solana.
 
