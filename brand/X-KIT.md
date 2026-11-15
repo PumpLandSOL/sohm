@@ -116,11 +116,11 @@ sOHM reads every payment back from Solana before crediting it, and reads its tre
 $sOHM
 ```
 
-### 9. (3,3) (video) · 204 chars · media: `sohm-33-12s.mp4`
+### 9. (3,3) (video) · 212 chars · media: `sohm-33-12s.mp4`
 ```
 Remember when half of crypto Twitter had (3,3) in their name?
 
-It was a strategy, not a joke: if nobody sells, everybody compounds. It took OHM to $1,415 a token.
+It was a strategy, not a joke: if nobody sells, everybody compounds. It built an $8 billion sector in 2021.
 
 Time to put it back in your name.
 
@@ -154,9 +154,9 @@ That's the sOHM staking curve at the current rate, compounding 288 times a day. 
 $sOHM
 ```
 
-### 13. Getting started (video) · 198 chars · media: `sohm-start-15s.mp4`
+### 13. Getting started (video) · 195 chars · media: `sohm-start-15s.mp4`
 ```
-Wonderland's TIME hit $10,063. Snowbank hit $8,356. KlimaDAO hit $3,777.
+At the top of 2021, Olympus and its forks were worth $8.03B combined.
 
 Getting into Solana's version takes a minute: connect Phantom, bond SOL, then claim and stake.
 
@@ -187,11 +187,9 @@ https://solanaohm.xyz
 $sOHM
 ```
 
-### 16. Market cap · 201 chars · media: `sohm-g11-compare.png`
+### 16. Market cap · 171 chars · media: `sohm-g11-compare.png`
 ```
-Solana has run this play before. Invictus, its 2021 OHM fork, traded as high as $1,425.
-
-Olympus peaked at $4.35B. Wonderland at $2.08B.
+Olympus peaked at a $4.35B market cap. Wonderland peaked at $2.08B. The whole (3,3) sector touched $8.03B.
 
 sOHM is the dot at the bottom of that chart, on day one.
 
